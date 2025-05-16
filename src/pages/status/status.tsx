@@ -1,11 +1,10 @@
-
 // @ts-nocheck
 
 import React, { useState } from "react";
 
 export default function StatusPage() {
     const [orderId, setOrderId] = useState("");
-    const [status, setStatus] = useState(null);
+    const [orderData, setOrderData] = useState(null);
     const [error, setError] = useState(null);
 
     const handleCheckStatus = () => {
@@ -19,11 +18,11 @@ export default function StatusPage() {
                 return res.json();
             })
             .then((data) => {
-                setStatus(data.status);
+                setOrderData(data);
                 setError(null);
             })
             .catch((err) => {
-                setStatus(null);
+                setOrderData(null);
                 setError("Nem található rendelés ezzel az azonosítóval.");
             });
     };
@@ -84,6 +83,17 @@ export default function StatusPage() {
         marginTop: "20px",
     };
 
+    const infoStyle = {
+        fontSize: "1em",
+        color: "#dddddd",
+        textAlign: "left",
+        marginTop: "15px",
+        lineHeight: "1.5",
+        backgroundColor: "rgba(255,255,255,0.05)",
+        padding: "15px",
+        borderRadius: "8px",
+    };
+
     return (
         <div style={containerStyle}>
             <div style={cardStyle}>
@@ -101,7 +111,17 @@ export default function StatusPage() {
                     Lekérdezés
                 </button>
 
-                {status && <p style={statusStyle}>📦 Aktuális státusz: <strong>{status}</strong></p>}
+                {orderData && (
+                    <div style={infoStyle}>
+                        <p><strong>📦 Rendelés ID:</strong> {orderData.id}</p>
+                        <p><strong>👤 Feladó:</strong> {orderData.sender}</p>
+                        <p><strong>🎯 Címzett:</strong> {orderData.recipient}</p>
+                        <p><strong>📝 Leírás:</strong> {orderData.description}</p>
+                        <p><strong>🕒 Időpont:</strong> {orderData.datetime}</p>
+                        <p style={statusStyle}>📦 Aktuális státusz: <strong>{orderData.status}</strong></p>
+                    </div>
+                )}
+
                 {error && <p style={errorStyle}>{error}</p>}
             </div>
         </div>
