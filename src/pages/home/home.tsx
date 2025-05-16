@@ -11,6 +11,8 @@ export default function HomePage() {
         background: "linear-gradient(to bottom right, #2c3e50, #000000)",
         color: "#f1f1f1",
         minHeight: "calc(100vh - 80px)",
+        maxHeight: "calc(100vh - 80px)",
+        overflowY: "scroll",
         width: "100%",
         maxWidth: "100vw",
         height: "100%",
