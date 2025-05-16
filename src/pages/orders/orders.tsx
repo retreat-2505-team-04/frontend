@@ -49,11 +49,11 @@ export default function OrdersPage() {
         })
             .then(() => {
                 if (orders?.length) {
-                    setOrders(
-                        orders?.map((order) =>
-                            order.id === id ? { ...order, status: newStatus } : order
-                        )
-                    );
+                    // setOrders(
+                    //     orders?.map((order) =>
+                    //         order.id === id ? { ...order, status: newStatus } : order
+                    //     )
+                    // );
                 }
             });
     };
@@ -168,20 +168,20 @@ export default function OrdersPage() {
                     </tr>
                     </thead>
                     <tbody>
-                    {orders && orders?.map((order) => (
-                        <tr key={order.id}>
-                            <td style={thTdStyle}>{order.id}</td>
-                            <td style={thTdStyle}>{order.recipient}</td>
-                            <td style={thTdStyle}>{order.description}</td>
-                            <td style={thTdStyle}>{order.status}</td>
-                            <td style={thTdStyle}>{order.datetime}</td>
-                            <td style={thTdStyle}>
-                                <button style={buttonStyle} onClick={() => updateStatus(order.id, "Kézbesítve")}>Kézbesítve</button>
-                                <button style={buttonStyle} onClick={() => assignZombie(order.id)}>Zombi</button>
-                                <button style={buttonStyle} onClick={() => fetchRisk(order.id)}>Kockázat</button>
-                            </td>
-                        </tr>
-                    ))}
+                    {/*{orders && orders?.map((order) => (*/}
+                    {/*    <tr key={order.id}>*/}
+                    {/*        <td style={thTdStyle}>{order.id}</td>*/}
+                    {/*        <td style={thTdStyle}>{order.recipient}</td>*/}
+                    {/*        <td style={thTdStyle}>{order.description}</td>*/}
+                    {/*        <td style={thTdStyle}>{order.status}</td>*/}
+                    {/*        <td style={thTdStyle}>{order.datetime}</td>*/}
+                    {/*        <td style={thTdStyle}>*/}
+                    {/*            <button style={buttonStyle} onClick={() => updateStatus(order.id, "Kézbesítve")}>Kézbesítve</button>*/}
+                    {/*            <button style={buttonStyle} onClick={() => assignZombie(order.id)}>Zombi</button>*/}
+                    {/*            <button style={buttonStyle} onClick={() => fetchRisk(order.id)}>Kockázat</button>*/}
+                    {/*        </td>*/}
+                    {/*    </tr>*/}
+                    {/*))}*/}
                     </tbody>
                 </table>
             </div>
