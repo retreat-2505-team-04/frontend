@@ -4,11 +4,16 @@ import React from "react";
 
 export default function HomePage() {
     const containerStyle = {
+        display: "flex",
+        flexDirection: "column",
+
         fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
         background: "linear-gradient(to bottom right, #2c3e50, #000000)",
         color: "#f1f1f1",
-        padding: "10px",
-        minHeight: "100vh",
+        minHeight: "calc(100vh - 80px)",
+        width: "100%",
+        maxWidth: "100vw",
+        height: "100%",
         backgroundImage: "url('https://images.unsplash.com/photo-1589820296156-d5a4b6a9f3d7?auto=format&fit=crop&w=1950&q=80')",
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -51,7 +56,6 @@ export default function HomePage() {
         color: "#dddddd",
     };
 
-    // @ts-ignore
     return (
         <div style={containerStyle}>
             <div style={cardStyle}>
