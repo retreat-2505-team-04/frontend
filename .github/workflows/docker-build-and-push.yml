@@ -1,4 +1,4 @@
-name: Build and Push Docker Image to ACR
+name: Build, Push and Deploy to Kubernetes
 
 on:
   push:
@@ -28,17 +28,21 @@ jobs:
         run: |
           docker push acrretreat2025.azurecr.io/team-4/frontend:latest
 
-      - name: Set up kubectl
-        uses: azure/setup-kubectl@v3
-        with:
-          version: 'latest'
+  deploy:
+    needs: build-and-push
+    runs-on: ubuntu-latest
 
-      - name: Set up kubeconfig
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up KUBECONFIG
         run: |
-          echo "${{ secrets.KUBECONFIG }}" > kubeconfig.yaml
-          export KUBECONFIG=$GITHUB_WORKSPACE/kubeconfig.yaml
+          mkdir -p $HOME/.kube
+          echo "${{ secrets.KUBECONFIG }}" > $HOME/.kube/config
+          chmod 600 $HOME/.kube/config
 
-      - name: Deploy to AKS
+      - name: Deploy to Kubernetes
         run: |
-          kubectl apply -f kubernetes
-
+          kubectl apply -f kubernetes/deployment.yaml
+          kubectl apply -f kubernetes/service.yaml
