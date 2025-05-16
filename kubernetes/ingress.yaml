@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: team4-frontend-ingress
+  namespace: team-4
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  ingressClassName: "webapprouting.kubernetes.azure.com"
+  tls:
+  - hosts:
+    - team-4.retreat.alerant.hu
+    secretName: team-4-tls
+  rules:
+  - host: team-4.retreat.alerant.hu
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: team4-frontend-service
+            port:
+              number: 80

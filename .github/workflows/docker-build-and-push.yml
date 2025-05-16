@@ -1,4 +1,4 @@
-name: Build and Push Docker Image to ACR
+name: Build, Push and Deploy to Kubernetes
 
 on:
   push:
@@ -28,3 +28,21 @@ jobs:
         run: |
           docker push acrretreat2025.azurecr.io/team-4/frontend:latest
 
+  deploy:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up KUBECONFIG
+        run: |
+          mkdir -p $HOME/.kube
+          echo "${{ secrets.KUBECONFIG }}" > $HOME/.kube/config
+          chmod 600 $HOME/.kube/config
+
+      - name: Deploy to Kubernetes
+        run: |
+          kubectl apply -f kubernetes/.
+          kubectl rollout restart deployment team4-frontend-deployment
