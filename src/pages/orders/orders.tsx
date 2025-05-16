@@ -8,7 +8,7 @@ export default function OrdersPage() {
     const [newOrder, setNewOrder] = useState({ sender: "", recipient: "", description: "", datetime: "" });
     const [token, setToken] = useState("YOUR_TOKEN_HERE");
 
-    const API_BASE = "https://zombi-logisztika.alerant.hu/api";
+    const API_BASE = "http://team-4.retreat.alerant.hu/api";
 
     useEffect(() => {
         fetch(`${API_BASE}/orders`, {

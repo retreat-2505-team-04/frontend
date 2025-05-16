@@ -2,7 +2,7 @@
 // @ts-nocheck
 
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/home/home";
 import './App.css';
 import OrdersPage from "./pages/orders/orders";
@@ -47,6 +47,26 @@ const navLinkStyle = {
 function App() {
   return (
       <>
+          <script>
+              {`function initMap() {
+                      const map = new google.maps.Map(document.getElementById('map'), {
+                      center: { lat: 47.4979, lng: 19.0402 },
+                      zoom: 13,
+                      styles: [
+                  { elementType: 'geometry', stylers: [{ color: '#1d2c4d' }] },
+                  { elementType: 'labels.text.fill', stylers: [{ color: '#8ec3b9' }] },
+                  { elementType: 'labels.text.stroke', stylers: [{ color: '#1a3646' }] },
+                  {
+                      featureType: 'road',
+                      elementType: 'geometry',
+                      stylers: [{ color: '#406880' }],
+                  },
+                      ],
+                  });
+                  window.initMap = initMap;
+                  `
+              }
+              </script>
           <div style={navbarStyle}>
               <div style={navTitleStyle}>🧟‍♂️ AgyKurier</div>
               <div style={navLinksStyle}>
@@ -55,7 +75,7 @@ function App() {
                   <a href="/zombies" style={navLinkStyle}>Zombik</a>
                   <a href="/risk" style={navLinkStyle}>Kockázatelemzés</a>
                   <a href="/status" style={navLinkStyle}>Státusz lekérdezés</a>
-                  <a href="/guide" style={navLinkStyle}>Zombi Kézikönyv</a>
+                  {/*<a href="/guide" style={navLinkStyle}>Zombi Kézikönyv</a>*/}
               </div>
           </div>
 

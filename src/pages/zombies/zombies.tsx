@@ -92,22 +92,6 @@ export default function ZombiesPage() {
             {/* Google Maps script betöltése */}
             <script>
                 {`
-        function initMap() {
-          const map = new google.maps.Map(document.getElementById('map'), {
-            center: { lat: 47.4979, lng: 19.0402 },
-            zoom: 13,
-            styles: [
-              { elementType: 'geometry', stylers: [{ color: '#1d2c4d' }] },
-              { elementType: 'labels.text.fill', stylers: [{ color: '#8ec3b9' }] },
-              { elementType: 'labels.text.stroke', stylers: [{ color: '#1a3646' }] },
-              {
-                featureType: 'road',
-                elementType: 'geometry',
-                stylers: [{ color: '#406880' }],
-              },
-            ],
-          });
-
           const zombies = ${JSON.stringify(zombies)};
           zombies.forEach(z => {
             new google.maps.Marker({
@@ -121,10 +105,10 @@ export default function ZombiesPage() {
             });
           });
         }
-        window.initMap = initMap;
+      
         `}
             </script>
-            <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAyMH-A99yD5fHQPz7uzqk8glNJYGEqus&callback=initMap" async defer></script>
         </div>
     );
 }
