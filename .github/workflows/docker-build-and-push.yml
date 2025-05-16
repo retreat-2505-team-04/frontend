@@ -28,3 +28,17 @@ jobs:
         run: |
           docker push acrretreat2025.azurecr.io/team-4/frontend:latest
 
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v3
+        with:
+          version: 'latest'
+
+      - name: Set up kubeconfig
+        run: |
+          echo "${{ secrets.KUBECONFIG }}" > kubeconfig.yaml
+          export KUBECONFIG=$GITHUB_WORKSPACE/kubeconfig.yaml
+
+      - name: Deploy to AKS
+        run: |
+          kubectl apply -f kubernetes
+
