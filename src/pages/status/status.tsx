@@ -9,7 +9,7 @@ export default function StatusPage() {
     const [error, setError] = useState(null);
 
     const handleCheckStatus = () => {
-        fetch(`https://team-4.retreat.alerant.hu/api/orders/${orderId}/status`, {
+        fetch(`https://team-4.retreat.alerant.hu/api/orders/${orderId}`, {
             headers: {
                 Authorization: `Bearer YOUR_TOKEN_HERE`,
             },
