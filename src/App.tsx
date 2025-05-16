@@ -47,26 +47,6 @@ const navLinkStyle = {
 function App() {
   return (
       <>
-          <script>
-              {`function initMap() {
-                      const map = new google.maps.Map(document.getElementById('map'), {
-                      center: { lat: 47.4979, lng: 19.0402 },
-                      zoom: 13,
-                      styles: [
-                  { elementType: 'geometry', stylers: [{ color: '#1d2c4d' }] },
-                  { elementType: 'labels.text.fill', stylers: [{ color: '#8ec3b9' }] },
-                  { elementType: 'labels.text.stroke', stylers: [{ color: '#1a3646' }] },
-                  {
-                      featureType: 'road',
-                      elementType: 'geometry',
-                      stylers: [{ color: '#406880' }],
-                  },
-                      ],
-                  });
-                  window.initMap = initMap;
-                  `
-              }
-              </script>
           <div style={navbarStyle}>
               <div style={navTitleStyle}>🧟‍♂️ AgyKurier</div>
               <div style={navLinksStyle}>

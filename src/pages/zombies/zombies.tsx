@@ -7,6 +7,50 @@ export default function ZombiesPage() {
     const [error, setError] = useState(null);
 
     useEffect(() => {
+        const loadScript = () => {
+            if (window.google && window.google.maps) {
+                initMap();
+            } else {
+                const script = document.createElement("script");
+                script.src =
+                    "https://maps.googleapis.com/maps/api/js?key=AIzaSyAE3wbDbuAhKXlKldCZXtqudAlE6XM7aKs&callback=initMap";
+                script.async = true;
+                window.initMap = initMap; // important!
+                document.body.appendChild(script);
+            }
+        };
+
+        const initMap = () => {
+            const map = new window.google.maps.Map(document.getElementById("map"), {
+                center: { lat: 47.4979, lng: 19.0402 },
+                zoom: 13,
+                styles: [
+                    { elementType: "geometry", stylers: [{ color: "#1d2c4d" }] },
+                    { elementType: "labels.text.fill", stylers: [{ color: "#8ec3b9" }] },
+                    { elementType: "labels.text.stroke", stylers: [{ color: "#1a3646" }] },
+                    { featureType: "road", elementType: "geometry", stylers: [{ color: "#406880" }] },
+                ],
+            });
+
+            zombies.forEach((z) => {
+                new window.google.maps.Marker({
+                    position: { lat: z.lat, lng: z.lng },
+                    map,
+                    title: z.name,
+                    icon: {
+                        url: "https://cdn-icons-png.flaticon.com/512/3035/3035684.png",
+                        scaledSize: new window.google.maps.Size(32, 32),
+                    },
+                });
+            });
+        };
+
+        if (zombies.length > 0) {
+            loadScript();
+        }
+    }, [zombies]);
+
+    useEffect(() => {
         // Itt jönne az igazi API hívás, most csak mintaadat
         const dummyZombies = [
             {
@@ -91,25 +135,6 @@ export default function ZombiesPage() {
             </div>
 
             {/* Google Maps script betöltése */}
-            <script>
-                {`
-          const zombies = ${JSON.stringify(zombies)};
-          zombies.forEach(z => {
-            new google.maps.Marker({
-              position: { lat: z.lat, lng: z.lng },
-              map,
-              title: z.name,
-              icon: {
-                url: 'https://cdn-icons-png.flaticon.com/512/3035/3035684.png',
-                scaledSize: new google.maps.Size(32, 32),
-              },
-            });
-          });
-        }
-      
-        `}
-            </script>
-            <script async defer src="https://maps.googleapis.com/maps/api/js?key=key&callback=initMap" async defer></script>
         </div>
     );
 }
