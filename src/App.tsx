@@ -71,10 +71,10 @@ function App() {
               <div style={navTitleStyle}>🧟‍♂️ AgyKurier</div>
               <div style={navLinksStyle}>
                   <a href="/" style={navLinkStyle}>Kezdőlap</a>
-                  <a href="/orders" style={navLinkStyle}>Rendelések</a>
-                  <a href="/zombies" style={navLinkStyle}>Zombik</a>
-                  <a href="/risk" style={navLinkStyle}>Kockázatelemzés</a>
-                  <a href="/status" style={navLinkStyle}>Státusz lekérdezés</a>
+                  <a href="#orders" style={navLinkStyle}>Rendelések</a>
+                  <a href="#zombies" style={navLinkStyle}>Zombik</a>
+                  <a href="#risk" style={navLinkStyle}>Kockázatelemzés</a>
+                  <a href="#status" style={navLinkStyle}>Státusz lekérdezés</a>
                   {/*<a href="/guide" style={navLinkStyle}>Zombi Kézikönyv</a>*/}
               </div>
           </div>
