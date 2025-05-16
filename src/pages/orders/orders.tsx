@@ -48,11 +48,13 @@ export default function OrdersPage() {
             body: JSON.stringify({ status: newStatus, description: "Frissítés UI-ból" }),
         })
             .then(() => {
-                setOrders(
-                    orders?.map((order) =>
-                        order.id === id ? { ...order, status: newStatus } : order
-                    )
-                );
+                if (orders?.length) {
+                    setOrders(
+                        orders?.map((order) =>
+                            order.id === id ? { ...order, status: newStatus } : order
+                        )
+                    );
+                }
             });
     };
 
@@ -166,7 +168,7 @@ export default function OrdersPage() {
                     </tr>
                     </thead>
                     <tbody>
-                    {orders?.map((order) => (
+                    {orders && orders?.map((order) => (
                         <tr key={order.id}>
                             <td style={thTdStyle}>{order.id}</td>
                             <td style={thTdStyle}>{order.recipient}</td>

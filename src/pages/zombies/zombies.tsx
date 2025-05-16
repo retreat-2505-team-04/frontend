@@ -33,9 +33,7 @@ export default function ZombiesPage() {
         fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
         background: "linear-gradient(to bottom right, #111, #000)",
         color: "#f1f1f1",
-        minHeight: "calc(100vh - 80px)",
-        maxHeight: "calc(100vh - 80px)",
-        overflowY: "scroll",
+        minHeight: "100vh",
         backgroundImage: "url('https://images.unsplash.com/photo-1616137584042-fefb1917e5c7?auto=format&fit=crop&w=1950&q=80')",
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -109,7 +107,7 @@ export default function ZombiesPage() {
       
         `}
             </script>
-            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAyMH-A99yD5fHQPz7uzqk8glNJYGEqus&callback=initMap" async defer></script>
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=key&callback=initMap" async defer></script>
         </div>
     );
 }
