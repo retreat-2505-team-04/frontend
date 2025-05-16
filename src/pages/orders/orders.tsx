@@ -49,7 +49,7 @@ export default function OrdersPage() {
         })
             .then(() => {
                 setOrders(
-                    orders.map((order) =>
+                    orders?.map((order) =>
                         order.id === id ? { ...order, status: newStatus } : order
                     )
                 );
