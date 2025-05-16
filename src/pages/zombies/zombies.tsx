@@ -38,7 +38,7 @@ export default function ZombiesPage() {
                     map,
                     title: z.name,
                     icon: {
-                        url: "https://cdn-icons-png.flaticon.com/512/3035/3035684.png",
+                        url: "https://cdn-icons-png.freepik.com/256/8537/8537212.png",
                         scaledSize: new window.google.maps.Size(32, 32),
                     },
                 });
